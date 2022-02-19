@@ -1,0 +1,16 @@
+@startuml
+:Robot: ==> (Receive the signal from observer robot)
+:Robot: ==> (Observe the wall)
+:Robot: ==> (Detect changes in the color of the wall)
+:Robot: ==> (Compare the changes with known legal signs on the wall)
+:Robot: ==> (Clean the wall)
+:Robot: ==> (Clean the floor)
+:Robot: ==> (Move forward)
+:Robot: ==> (Rotate x degrees)
+:Robot: ==> (Move robotic arm up)
+:Robot: ==> (Move robotic arm down)
+:Robot: ==> (Move robotic arm left)
+:Robot: ==> (Move robotic arm right)
+:Robot: ==> (Start spraying paint)
+:Robot: ==> (Stop spraying paint)
+@enduml
