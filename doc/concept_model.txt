@@ -5,4 +5,5 @@ Camera - "Control System" : reports dirty wall coordinates >
 "Control System" - "Robotic Arm"  : aligns arm with dirty part of the wall <
 User - "Control System" : turns on and off >
 "Paint Sprayer" -  "Control System" : starts/stops spraying paint <
+Graffiti - "Paint Sprayer" : is covered by paint >
 @enduml
