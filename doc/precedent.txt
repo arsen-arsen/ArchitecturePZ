@@ -1,0 +1,20 @@
+@startuml
+actor User
+participant "Comms Module"
+participant "Main Controller"
+participant "Movement Module"
+participant Camera
+participant "Robotic Arm"
+participant "Paint Gun"
+User -> "Comms Module": Switch_On()
+"Comms Module" -> "Main Controller": Start_Patrolling()
+"Main Controller" -> "Movement Module": Move_To_XYZ()
+"Main Controller" -> Camera: Observe_Graffiti()
+Camera -> "Main Controller": Object_Found()
+"Main Controller" -> User: Confirm()
+"Main Controller" -> "Robotic Arm": Move_Gun_To_XYZ()
+"Main Controller" -> "Paint Gun": Start_Spray()
+Camera -> "Main Controller": Confirm_Finish()
+"Main Controller" -> "Paint Gun": Stop_Spray()
+"Comms Module" -> User: Report_As_Solved()
+@enduml
