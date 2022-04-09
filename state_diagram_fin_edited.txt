@@ -1,0 +1,33 @@
+@startuml
+[*] --> Robot_initialize 
+Robot_initialize  --> Control_System_Off : default_state_off
+Robot_initialize  --> Error : not_responding
+Control_System_Off --> Error : not_responding
+Control_System_Off --> Control_System_On : user_presses_button
+Control_System_On --> Error : not_responding
+Control_System_On --> Control_System_Off : user_initialize_off
+Robot_initialize --> Error : not_responding
+Control_System_On --> Robot_initialize : sends_signal
+Robot_initialize --> Control_System_Off :user_initialize_off
+Robot_initialize --> Engine_Off : Control_System_signal_stop
+Engine_Off --> Error : not_responding
+Engine_On --> Error : not_responding
+Engine_On --> Engine_Moving : Control_System_sends_signal
+Engine_Moving --> Engine_Off : Control_System_sends_signal
+Engine_Moving --> Error : not_responding
+Engine_On <-- Engine_Off : Control_System_signal_start
+Engine_On --> Engine_Off : Control_System_signal_stop
+Robot_initialize --> PaintSprayer_Off : Control_System_signal_stop
+PaintSprayer_Off --> Error : not_responding
+PaintSprayer_Off --> PaintSprayer_On : Control_System_signal_start
+PaintSprayer_Off <-- PaintSprayer_On : Control_System_signal_stop
+PaintSprayer_On --> Error : not_responding
+Robot_initialize --> Robotic_Arm_Off : Control_System_signal_stop
+Robotic_Arm_Off --> Error : not_responding
+Robotic_Arm_Off --> Robotic_Arm_On : Control_System_signal_start
+Robotic_Arm_Off <-- Robotic_Arm_On : Control_System_signal_stop
+Robotic_Arm_On --> Error : not_responding
+Robotic_Arm_Moving --> Error : not_responding
+Robotic_Arm_Moving --> Robotic_Arm_Off : CS_signal_stop
+Robotic_Arm_On --> Robotic_Arm_Moving : CS_signal_start_moving
+@enduml
