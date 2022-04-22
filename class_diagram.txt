@@ -1,0 +1,22 @@
+@startuml
+abstract        GetCommand
+GetCommand : virtual void manual_control() = 0;
+KeyboardControl : manual_control()
+GetCommand <|--  KeyboardControl
+Robot     o--   GetCommand
+class           KeyboardControl
+class           Robot{
+    State_Robot state;
+    double angle;
+    double distance;
+    GetCommand* robot_command;
+    Robot(GetCommand* _mgmt): robot_command(_mgmt) {};
+    State_Robot getState();
+    void setState(State_Robot s_state);
+    void processEvent(State_Robot state);
+    void rotate(double angle);
+    void moveStraight(double distance);
+    void clean();
+    void getInput();
+}
+@enduml
